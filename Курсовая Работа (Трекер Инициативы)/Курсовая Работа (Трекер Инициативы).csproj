@@ -8,4 +8,22 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="6545874.png" />
+    <None Remove="MainStyle.png" />
+    <None Remove="MainWindow.png" />
+    <None Remove="png-clipart-dungeons-dragons-d20-system-saving-throw-computer-icons-dice-others-angle-rectangle.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="MainWindow2.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="6545874.png" />
+    <Resource Include="MainStyle.png" />
+    <Resource Include="MainWindow.png" />
+    <Resource Include="png-clipart-dungeons-dragons-d20-system-saving-throw-computer-icons-dice-others-angle-rectangle.png" />
+  </ItemGroup>
+
 </Project>

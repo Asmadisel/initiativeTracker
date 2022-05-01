@@ -20,9 +20,25 @@ namespace Курсовая_Работа__Трекер_Инициативы_
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+      
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
+            
+        }
+
+        private void OpenAllList(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Открыт список элементов");
+        }
+
+        private void OpenPatterns(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Открыт список паттернов");
+        }
+        private void Open_Directories(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Открыт список справочников");
         }
     }
 }

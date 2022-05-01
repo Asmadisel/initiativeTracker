@@ -5,6 +5,167 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Курсовая_Работа__Трекер_Инициативы_"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid/>
+        Title="Трекер весовой очереди" Height="450" Width="800" HorizontalAlignment="Stretch" WindowStyle="ThreeDBorderWindow" Icon="/6545874.png" Cursor="AppStarting" RenderTransformOrigin="0.5,0.5" Foreground="Black" BorderBrush="#FF504A4A">
+    <Window.Resources>
+        <!--Ресурсы окна — сероый цвет Ta-->
+        <!--Задан фон для окон приложения-->
+
+        <!--Стиль всех TabItem в приложении-->
+        <Style x:Key="TabStyle1"  TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border>
+                            <Grid>
+                                <Grid>
+                                    <Border x:Name="border" 
+                                            CornerRadius="3,3,0,0"
+                                            Background="Gray"
+                                            Margin="3">
+                                        <ContentPresenter x:Name="ContentSite" ContentSource="Header"/>
+                                    </Border>
+                                    <!--Добавить более тёмные границы по нажатию-->
+
+                                </Grid>
+                                <ContentPresenter 
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!--Триггер наведения и не наведения-->
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="LightGray" />
+                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver"
+                                     Value="False">
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="Gray" />
+                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="White"/>
+                            </Trigger>
+                            <!--Триггер нажатия и не нажатия-->
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="LightGray" />
+                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected"
+                                Value="False">
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="Gray" />
+                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/MainWindow.png"/>
+    </Window.Background>
+    <!--Конец списка стилей окна-->
+    <Grid ShowGridLines="True" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="178*"/>
+            <RowDefinition Height="39*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="192*"/>
+            <ColumnDefinition Width="233*"/>
+            <ColumnDefinition Width="375*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="2" Grid.Row="0"  VerticalAlignment="Top">
+            <!--Начальная панель элементов с подсказками-->
+            <TextBlock Text="Контекстное меню" Foreground="Black" Margin="8,0,0,0" FontSize="14" FontWeight="Bold" FontFamily="Yu Gothic UI Semibold" >
+                <TextBlock.Background>
+                    <ImageBrush ImageSource="/MainWindow.png"/>
+                </TextBlock.Background>
+            </TextBlock>
+            <TabControl Height="339">
+                <TabControl.Background>
+                    <ImageBrush ImageSource="/MainWindow.png"/>
+                </TabControl.Background>
+                <TabItem x:Name="PersonList" Height="25"  IsSelected="False" Header="Список существ" Style="{DynamicResource TabStyle1}">
+                    <!--Список всех объектов (с будущей иерархией по типам монстры и т.п., здесь отображается список всех существ и есть функционал добавления
+                        на правую кнопку мыши существа в инициативу-->
+
+                    <TabItem.Content>
+                        <!--Заполняется по алгоритму Списка существ-->
+                        <TreeView Height="auto">
+                            <TreeView.Background>
+                                <ImageBrush ImageSource="/MainStyle.png"/>
+                            </TreeView.Background>
+                            <TreeViewItem Header="Список задач">
+                                <!--придумать привязку для раскрытия-->
+                                <TreeViewItem Header="Задачи">
+                                    <!--Курсовой проект (задачи с "весом" находятся здесь-->
+
+                                </TreeViewItem>
+                                <TreeViewItem Header="Персонажи">
+                                    <!--Список существ, созданных как персонажи игроков-->
+                                    <TreeViewItem Header="Персонажи Мастера">
+
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Персонажи Игроков">
+
+                                    </TreeViewItem>
+                                </TreeViewItem>
+
+                                <TreeViewItem Header="Существа">
+                                    <TreeViewItem Header="Гуманоиды">
+
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Животные">
+
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Монстры">
+
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Нежить">
+
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Механизмы" >
+                                        <!--Заполнить как слева все пункты для отображения List<string>-->
+
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Энтропионы">
+
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Иные">
+
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Прочее">
+
+                                    </TreeViewItem>
+                                </TreeViewItem>
+                            </TreeViewItem>
+                        </TreeView>
+                    </TabItem.Content>
+                </TabItem>
+                <!--Вкладка Паттерны, выводящая вертикальный выпдающий список с-->
+                <TabItem x:Name="Patterns" Header="Шаблоны" Style="{DynamicResource TabStyle1}" IsSelected="False">
+
+                </TabItem>
+                <TabItem x:Name="Samples" Header="Справочники" Style="{DynamicResource TabStyle1}" IsSelected="False">
+
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#FF634E4E" />
+        <GridSplitter Grid.Column="2" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#FF634E4E" />
+        <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="3"
+        HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="#FF634E4E" />
+    </Grid>
 </Window>
